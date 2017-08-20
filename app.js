@@ -16,6 +16,15 @@
     };
   });
 
+  app.controller("ReviewController", function(){
+    this.review = {};
+
+    this.addReview = function(product){
+      product.reviews.push(this.review);
+      this.review = {};
+    }
+  });
+
   var gems = [{
     name: 'Dodecahedron',
     price: 2,
@@ -26,6 +35,11 @@
       thumb: 'img1.jpeg'
     },{
 
+    }],
+    reviews: [{
+      stars: 1,
+      body: "fun",
+      author: "Not@hot.com"
     }]
   },{
     name: 'Pentaginal Gem',
@@ -36,6 +50,7 @@
       full: 'img2.jpg'
     },{
 
-    }]
+    }],
+    review: []
   }]
 })();

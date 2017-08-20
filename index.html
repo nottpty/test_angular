@@ -27,7 +27,31 @@
         </div>
         <div class="panel" ng-show="panel.isSelected(3)">
           <h4>Reviews</h4>
-          <blockquote>None yet</blockquote>
+          <li ng-repeat="review in product.reviews">
+            <b>Stars: {{review.stars}}</b>
+            {{review.body}}
+            <cite>by:{{review.author}}</cite>
+          </li>
+          <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+            <blockquote>
+              <b>Stars: {{reviewCtrl.review.stars}}</b>
+              {{reviewCtrl.review.body}}
+              <cite>by:{{reviewCtrl.review.author}}</cite>
+            </blockquote>
+            <select ng-model="reviewCtrl.review.stars">
+              <option value="1">1 star</option>
+              <option value="2">2 star</option>
+              <option value="3">3 star</option>
+            </select>
+            <textarea ng-model="reviewCtrl.review.body"></textarea>
+            <label>by:</label>
+            <input ng-model="reviewCtrl.review.author" type="email"/>
+            <input type="submit" value="Submit"/>
+            <!-- <input ng-model="review.terms" type="checkbox"/> I agree to the terms
+            <input ng-model="review.color" type="radio" value="red"/> Red
+            <input ng-model="review.color" type="radio" value="blue"/> Blue
+            <input ng-model="review.color" type="radio" value="green"/> Green -->
+          </form>
         </div>
       </section>
     </li>
